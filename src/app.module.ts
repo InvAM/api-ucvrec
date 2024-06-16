@@ -13,6 +13,8 @@ import { HabilidadesprgModule } from './habilidadesprg/habilidadesprg.module';
 import { HabilidadesmatModule } from './habilidadesmat/habilidadesmat.module';
 import { CondicionModule } from './condicion/condicion.module';
 import { LenguajeModule } from './lenguaje/lenguaje.module';
+import { HabilidadesblaModule } from './habilidadesbla/habilidadesbla.module';
+import { InteresModule } from './interes/interes.module';
 
 @Module({
   imports: [
@@ -41,6 +43,8 @@ import { LenguajeModule } from './lenguaje/lenguaje.module';
     HabilidadesmatModule,
     CondicionModule,
     LenguajeModule,
+    HabilidadesblaModule,
+    InteresModule,
   ],
   controllers: [AppController],
   providers: [AppService],
