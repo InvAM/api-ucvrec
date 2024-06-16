@@ -10,6 +10,9 @@ import { CredencialesModule } from './credenciales/credenciales.module';
 import { ParticipacionModule } from './participacion/participacion.module';
 import { NivelacademicoModule } from './nivelacademico/nivelacademico.module';
 import { HabilidadesprgModule } from './habilidadesprg/habilidadesprg.module';
+import { HabilidadesmatModule } from './habilidadesmat/habilidadesmat.module';
+import { CondicionModule } from './condicion/condicion.module';
+import { LenguajeModule } from './lenguaje/lenguaje.module';
 
 @Module({
   imports: [
@@ -35,6 +38,9 @@ import { HabilidadesprgModule } from './habilidadesprg/habilidadesprg.module';
     ParticipacionModule,
     NivelacademicoModule,
     HabilidadesprgModule,
+    HabilidadesmatModule,
+    CondicionModule,
+    LenguajeModule,
   ],
   controllers: [AppController],
   providers: [AppService],
