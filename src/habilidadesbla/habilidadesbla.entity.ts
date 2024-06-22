@@ -1,8 +1,8 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, OneToMany, PrimaryColumn } from "typeorm";
 
 @Entity({name: 'Habilidadesbla'})
 export class Habilidadesbla{
-    @PrimaryGeneratedColumn()
+    @PrimaryColumn()
     IDHabilidadesbla: number;
 
     @Column()

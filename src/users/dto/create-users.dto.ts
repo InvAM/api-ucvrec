@@ -12,7 +12,7 @@ export class CreateUsersDto {
   @MinLength(1)
   Apellido: string;
 
-  DNi: string
+  DNI: string
 
   @Transform(({ value }) => value.trim())
   @IsString()
@@ -27,4 +27,6 @@ export class CreateUsersDto {
 
   @IsNumber()
   IDCiclo: number;
+
+  IDia: string
 }

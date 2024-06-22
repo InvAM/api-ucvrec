@@ -23,21 +23,19 @@ export class UsersService {
     const graduacionFound = await this.graduacionService.getGraduacionOne(
       users.IDGraduacion,
     );
-    const cicloFound = await this.cicloService.getCicloOne(
-      users.IDCiclo,
-    );
+    const cicloFound = await this.cicloService.getCicloOne(users.IDCiclo);
 
-    if (!generoFound ) {
+    if (!generoFound) {
+      return new HttpException('Faltan datos: GENERO', HttpStatus.NOT_FOUND);
+    }
+    if (!graduacionFound) {
       return new HttpException(
-        'Faltan datos: GENERO',
+        'Faltan datos: Graduacion',
         HttpStatus.NOT_FOUND,
       );
     }
-    if(!graduacionFound){
-      return new HttpException('Faltan datos: Graduacion',HttpStatus.NOT_FOUND)
-    }
-    if(!cicloFound){
-      return new HttpException('Faltan datos: Ciclo', HttpStatus.NOT_FOUND)
+    if (!cicloFound) {
+      return new HttpException('Faltan datos: Ciclo', HttpStatus.NOT_FOUND);
     }
 
     const newUser = this.userRepository.create(users);
@@ -46,18 +44,22 @@ export class UsersService {
 
   getUser() {
     return this.userRepository.find({
-      relations: ['genero', 'ciclo', 'graduacion',],
+      relations: ['genero', 'ciclo', 'graduacion'],
     });
   }
 
   getUserOne(IDUser: number) {
     return this.userRepository.findOne({
       where: { IDUser },
-      relations: ['genero', 'ciclo', 'graduacion',],
+      relations: ['genero', 'ciclo', 'graduacion'],
     });
   }
 
-  updateUser(IDUser: number, users:UpdateUsersDto){
-    this.userRepository.update({IDUser}, users)
+  updateUser(IDUser: number, users: UpdateUsersDto) {
+    this.userRepository.update({ IDUser }, users);
+  }
+
+  deleteUser(IDUser: number) {
+    return this.userRepository.delete({ IDUser });
   }
 }

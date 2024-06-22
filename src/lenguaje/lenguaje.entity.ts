@@ -1,8 +1,8 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, OneToMany, PrimaryColumn } from "typeorm";
 
 @Entity({name: 'Lenguaje'})
 export class Lenguaje{
-    @PrimaryGeneratedColumn()
+    @PrimaryColumn()
     IDLenguaje: number;
 
     @Column()

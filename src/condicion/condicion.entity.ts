@@ -1,8 +1,8 @@
-import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
+import { Column, Entity, OneToMany, PrimaryColumn } from "typeorm";
 
 @Entity({name: 'Condicion'})
 export class Condicion{
-    @PrimaryGeneratedColumn()
+    @PrimaryColumn()
     IDCondicion: number;
 
     @Column()

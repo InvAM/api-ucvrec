@@ -24,9 +24,9 @@ export class Users {
 
   @Column()
   Edad: number;
-  
+
   @Column()
-  DNI: string
+  DNI: string;
 
   @Column()
   IDGenero: number;
@@ -42,12 +42,13 @@ export class Users {
 
   @Column()
   IDCiclo: number;
-  @ManyToOne(()=> Ciclo, (ciclo)=> ciclo.users)
-  @JoinColumn({name:'IDCiclo'})
-  ciclo: Ciclo
+  @ManyToOne(() => Ciclo, (ciclo) => ciclo.users)
+  @JoinColumn({ name: 'IDCiclo' })
+  ciclo: Ciclo;
 
-  @OneToOne(()=> Credenciales,(credenciales)=> credenciales.users)
-  credenciales: Credenciales
+  @OneToOne(() => Credenciales, (credenciales) => credenciales.users)
+  credenciales: Credenciales;
 
-
+  @Column()
+  IDia: string;
 }
