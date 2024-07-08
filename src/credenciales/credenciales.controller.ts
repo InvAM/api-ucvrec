@@ -3,12 +3,18 @@ import {
   Body,
   Controller,
   Get,
+  HttpException,
+  HttpStatus,
+  Param,
+  Patch,
   Post,
   ValidationPipe,
 } from '@nestjs/common';
 import { CredencialesService } from './credenciales.service';
 import { CreateCredencialesDto } from './dto/create-credenciales.dto';
 import { validate } from 'class-validator';
+import { Credenciales } from './credenciales.entity';
+import { UpdateCredencialesDto } from './dto/update-credenciales.dto';
 
 @Controller('credenciales')
 export class CredencialesController {
@@ -22,6 +28,20 @@ export class CredencialesController {
   @Get()
   getCredenciales() {
     return this.credencialesService.getCredenciales();
+  }
+
+  @Get(':username')
+  getCredencialOne(@Param('username') username: string):Promise<Credenciales>{
+    return this.credencialesService.findOneByUser(username);
+  }
+
+  @Patch('update-password')
+  async updatePassword(@Body() updatePasswordDto: UpdateCredencialesDto) {
+    try {
+      return await this.credencialesService.updatePassword(updatePasswordDto);
+    } catch (error) {
+      throw new HttpException(error.message, HttpStatus.BAD_REQUEST);
+    }
   }
 
   @Post('validar')

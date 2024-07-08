@@ -4,6 +4,7 @@ import { Credenciales } from './credenciales.entity';
 import { Repository } from 'typeorm';
 import { UsersService } from 'src/users/users.service';
 import { CreateCredencialesDto } from './dto/create-credenciales.dto';
+import { UpdateCredencialesDto } from './dto/update-credenciales.dto';
 
 @Injectable()
 export class CredencialesService {
@@ -43,4 +44,17 @@ export class CredencialesService {
   findOneByUser(username: string) {
     return this.credencialesRepository.findOneBy({ username });
   }
+
+  async updatePassword(updatePasswordDto: UpdateCredencialesDto) {
+    const { username, password } = updatePasswordDto;
+    const credenciales = await this.credencialesRepository.findOneBy({ username });
+
+    if (!credenciales) {
+      throw new HttpException('Usuario no encontrado', HttpStatus.NOT_FOUND);
+    }
+
+    credenciales.password = password;
+    return this.credencialesRepository.save(credenciales);
+  }
 }
+
